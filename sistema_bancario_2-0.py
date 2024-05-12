@@ -73,25 +73,31 @@ def extratar(extrato, saldo = saldo):
 
 
 def validar_usuario(cpf, usuarios):
-    cpf = cpf
-    usuarios = usuarios
-    for usuarios in usuarios:
-        if usuarios["cpf"] == cpf:
-            return False
-        else:
-            return True
+    if usuarios: 
+        print("dentro de comparacao")   
+        cpf = cpf
+        usuarios = usuarios
+        for usuarios in usuarios:
+            if usuarios["cpf"] == cpf:
+                return False
+            else:
+                return True
+    else:
+        print("dentro de caso string vazia")
+        return True
 
 
-def mk_user():
-    nome = input("digite o nome do usuario")
-    data_de_nascimento = input("digite a data de nascimento (dd-mm-aaaa)")
-    cpf = input("digite o cpf do usuario")
-    endereço = input("digite o endereço do usuario (logradouro, numero - bairro - cidade/sigla estado)")
+def mk_user(usuarios):
+    nome = input("digite o nome do usuario: ")
+    data_de_nascimento = input("digite a data de nascimento (dd-mm-aaaa): ")
+    cpf = input("digite o cpf do usuario: ")
+    endereco = input("digite o endereço do usuario (logradouro, numero - bairro - cidade/sigla estado): ")
 
-    if (nome & data_de_nascimento & cpf & endereço):
+    if (nome and data_de_nascimento and cpf and endereco):
         user_valido = validar_usuario(cpf, usuarios)
         if user_valido:
-            usuarios.append("nome": nome, data_nascimento)
+            usuarios.append({"nome": nome, "data_de_nascimento": data_de_nascimento,"cpf": cpf, "endereco": endereco})
+            
         else:
             print("Usuario ja possue cadastro!")
 
@@ -99,7 +105,7 @@ def mk_user():
         print("Usuário invalido, favor preencher todos os campos")
 
 
-def mk_acc():
+#def mk_acc():
 
 
 while True:
