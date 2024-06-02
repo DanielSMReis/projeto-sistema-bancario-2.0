@@ -128,7 +128,7 @@ while True:
         mk_user(usuarios)
     
     elif opcao == "c":
-        mk_acc()
+        mk_acc(AGENCIA, numero_conta, usuarios)
 
     elif opcao == "q":
         break
