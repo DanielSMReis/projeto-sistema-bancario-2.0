@@ -19,7 +19,7 @@ extrato = ""
 numero_saques = 0
 usuarios = []
 contas = []
-
+numero_conta = 0
 
 
 def depositar(extrato, saldo):
@@ -73,18 +73,13 @@ def extratar(extrato, saldo = saldo):
 
 
 def validar_usuario(cpf, usuarios):
-    if usuarios: 
-        print("dentro de comparacao")   
-        cpf = cpf
-        usuarios = usuarios
-        for usuarios in usuarios:
-            if usuarios["cpf"] == cpf:
-                return False
-            else:
-                return True
-    else:
-        print("dentro de caso string vazia")
-        return True
+    cpf = cpf
+    usuarios = usuarios
+    for usuarios in usuarios:
+        if usuarios["cpf"] == cpf:
+            return False
+        else:
+            return True
 
 
 def mk_user(usuarios):
@@ -105,8 +100,16 @@ def mk_user(usuarios):
         print("Usuário invalido, favor preencher todos os campos")
 
 
-#def mk_acc():
+def mk_acc(AGENCIA, numero_conta, usuarios):
+    nw_acc = input("digite o numero do cpf do usuario para ser vinculado à conta: ")
+    for usuarios in usuarios:
+        if usuarios["cpf"] == nw_acc:
+            numero_conta += numero_conta
 
+        else:
+            print("CPF de usuario ainda nao cadastrado!")
+    contas.append({"agencia": AGENCIA, "Conta": numero_conta, "CPF": nw_acc})
+    
 
 while True:
 
@@ -123,6 +126,9 @@ while True:
 
     elif opcao == "u":
         mk_user(usuarios)
+    
+    elif opcao == "c":
+        mk_acc()
 
     elif opcao == "q":
         break
